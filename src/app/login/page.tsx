@@ -29,6 +29,14 @@ export default function LoginPage() {
 
   const handleGoogleLogin = async () => {
     const provider = new GoogleAuthProvider();
+    if (!auth) {
+        toast({
+            variant: "destructive",
+            title: "Firebase Not Configured",
+            description: "Firebase authentication is not configured. Please check your API keys.",
+        });
+        return;
+    }
     try {
       const result: UserCredential = await signInWithPopup(auth, provider);
       // For this prototype, we'll assume any successful Google login is an owner.
