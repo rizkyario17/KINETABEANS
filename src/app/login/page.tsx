@@ -9,9 +9,10 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Logo } from "@/components/icons";
 import { Package, BarChart3, Lock, Users, Truck, CreditCard } from "lucide-react";
-import { auth } from '@/lib/firebase';
-import { GoogleAuthProvider, signInWithPopup, UserCredential } from "firebase/auth";
 import { useToast } from "@/hooks/use-toast";
+// Firebase imports will be done dynamically inside the function
+// import { auth } from '@/lib/firebase';
+// import { GoogleAuthProvider, signInWithPopup, UserCredential } from "firebase/auth";
 
 const GoogleIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24px" height="24px" {...props}>
@@ -28,17 +29,22 @@ export default function LoginPage() {
   const { toast } = useToast();
 
   const handleGoogleLogin = async () => {
-    const provider = new GoogleAuthProvider();
+    // Dynamically import Firebase modules only on the client-side
+    const { auth } = await import('@/lib/firebase');
+    const { GoogleAuthProvider, signInWithPopup } = await import('firebase/auth');
+    
     if (!auth) {
         toast({
             variant: "destructive",
             title: "Firebase Not Configured",
-            description: "Firebase authentication is not configured. Please check your API keys.",
+            description: "Firebase authentication is not configured. Please check your .env.local file.",
         });
         return;
     }
+
+    const provider = new GoogleAuthProvider();
     try {
-      const result: UserCredential = await signInWithPopup(auth, provider);
+      const result = await signInWithPopup(auth, provider);
       // For this prototype, we'll assume any successful Google login is an owner.
       // In a real app, you would check the user's role from your database (e.g., Firestore).
       localStorage.setItem('userRole', 'owner');
