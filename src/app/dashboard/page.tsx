@@ -22,14 +22,7 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid } from "recharts"
 import { DollarSign, CreditCard, AlertTriangle, PackageX } from "lucide-react"
 import { transactions as recentTransactions } from '@/lib/transaction-data';
 
-const chartData = [
-    { month: "January", Penjualan: 18600000 },
-    { month: "February", Penjualan: 30500000 },
-    { month: "March", Penjualan: 23700000 },
-    { month: "April", Penjualan: 7300000 },
-    { month: "May", Penjualan: 20900000 },
-    { month: "June", Penjualan: 21400000 },
-  ]
+const chartData: any[] = [];
   
 const chartConfig = {
     Penjualan: {
@@ -66,9 +59,9 @@ export default function DashboardPage() {
                 <DollarSign className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
-                <div className="text-2xl font-bold">{formatCurrency(45231890)}</div>
+                <div className="text-2xl font-bold">{formatCurrency(0)}</div>
                 <p className="text-xs text-muted-foreground">
-                    +20.1% from last month
+                    +0% from last month
                 </p>
                 </CardContent>
             </Card>
@@ -78,9 +71,9 @@ export default function DashboardPage() {
                 <CreditCard className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
-                <div className="text-2xl font-bold">{formatCurrency(12234000)}</div>
+                <div className="text-2xl font-bold">{formatCurrency(0)}</div>
                 <p className="text-xs text-muted-foreground">
-                    +19% from last month
+                    +0% from last month
                 </p>
                 </CardContent>
             </Card>
@@ -91,7 +84,7 @@ export default function DashboardPage() {
                   <AlertTriangle className="h-4 w-4 text-muted-foreground" />
                   </CardHeader>
                   <CardContent>
-                  <div className="text-2xl font-bold">2</div>
+                  <div className="text-2xl font-bold">0</div>
                   <p className="text-xs text-muted-foreground">
                       Items with stock &lt; 10
                   </p>
@@ -105,7 +98,7 @@ export default function DashboardPage() {
                   <PackageX className="h-4 w-4 text-muted-foreground" />
                   </CardHeader>
                   <CardContent>
-                  <div className="text-2xl font-bold">1</div>
+                  <div className="text-2xl font-bold">0</div>
                   <p className="text-xs text-muted-foreground">
                       Items sold out
                   </p>
@@ -176,4 +169,3 @@ export default function DashboardPage() {
       </>
     )
   }
-  

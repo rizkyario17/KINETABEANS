@@ -43,40 +43,7 @@ import { transactions as initialTransactions, addTransaction } from '@/lib/trans
 
 
 // This data would ideally come from a shared state/context or API
-const initialInventory = [
-    { id: '1', name: 'Ground Arabika 250gr Full Roasted', sku: 'GROUND-ARB-250G-FR', stock: 25, price: 85000, category: 'Production' },
-    { id: '2', name: 'Ground Arabika 250gr Medium Roasted', sku: 'GROUND-ARB-250G-MR', stock: 30, price: 80000, category: 'Production' },
-    { id: '3', name: 'Ground Arabika 250gr Light Roasted', sku: 'GROUND-ARB-250G-LR', stock: 15, price: 75000, category: 'Production' },
-    { id: '4', name: 'Ground Arabika 500gr Full Roasted', sku: 'GROUND-ARB-500G-FR', stock: 20, price: 160000, category: 'Production' },
-    { id: '5', name: 'Ground Arabika 500gr Medium Roasted', sku: 'GROUND-ARB-500G-MR', stock: 8, price: 150000, category: 'Production' },
-    { id: '6', name: 'Ground Arabika 500gr Light Roasted', sku: 'GROUND-ARB-500G-LR', stock: 12, price: 145000, category: 'Production' },
-    { id: '7', name: 'Ground Arabika 1Kg Full Roasted', sku: 'GROUND-ARB-1KG-FR', stock: 18, price: 300000, category: 'Production' },
-    { id: '8', name: 'Ground Arabika 1Kg Medium Roasted', sku: 'GROUND-ARB-1KG-MR', stock: 22, price: 290000, category: 'Production' },
-    { id: '9', name: 'Ground Arabika 1Kg Light Roasted', sku: 'GROUND-ARB-1KG-LR', stock: 9, price: 280000, category: 'Production' },
-    { id: '10', name: 'Ground Robusta 250gr Full Roasted', sku: 'GROUND-ROB-250G-FR', stock: 40, price: 65000, category: 'Production' },
-    { id: '11', name: 'Ground Robusta 250gr Medium Roasted', sku: 'GROUND-ROB-250G-MR', stock: 50, price: 60000, category: 'Production' },
-    { id: '12', name: 'Ground Robusta 250gr Light Roasted', sku: 'GROUND-ROB-250G-LR', stock: 0, price: 55000, category: 'Production' },
-    { id: '13', name: 'Ground Robusta 500gr Full Roasted', sku: 'GROUND-ROB-500G-FR', stock: 35, price: 120000, category: 'Production' },
-    { id: '14', name: 'Ground Robusta 500gr Medium Roasted', sku: 'GROUND-ROB-500G-MR', stock: 28, price: 110000, category: 'Production' },
-    { id: '15', name: 'Ground Robusta 500gr Light Roasted', sku: 'GROUND-ROB-500G-LR', stock: 11, price: 105000, category: 'Production' },
-    { id: '16', name: 'Ground Robusta 1Kg Full Roasted', sku: 'GROUND-ROB-1KG-FR', stock: 25, price: 230000, category: 'Production' },
-    { id: '17', name: 'Ground Robusta 1Kg Medium Roasted', sku: 'GROUND-ROB-1KG-MR', stock: 19, price: 220000, category: 'Production' },
-    { id: '18', name: 'Ground Robusta 1Kg Light Roasted', sku: 'GROUND-ROB-1KG-LR', stock: 5, price: 210000, category: 'Production' },
-    { id: '19', name: 'Green Beans Arabika 1Kg Honey Process', sku: 'GREENBEANS-ARB-1KG-HONEY', stock: 10, price: 250000, category: 'Purchase' },
-    { id: '20', name: 'Green Beans Arabika 1Kg Natural Process', sku: 'GREENBEANS-ARB-1KG-NAT', stock: 15, price: 240000, category: 'Purchase' },
-    { id: '21', name: 'Green Beans Robusta 1Kg Washed Process', sku: 'GREENBEANS-ROB-1KG-WASH', stock: 20, price: 180000, category: 'Purchase' },
-    { id: '22', name: 'Roasted Beans Arabika 250gr Medium Roasted', sku: 'ROASTEDBEANS-ARB-250G-MR', stock: 25, price: 90000, category: 'Production' },
-    { id: '23', name: 'Roasted Beans Robusta 500gr Full Roasted', sku: 'ROASTEDBEANS-ROB-500G-FR', stock: 30, price: 130000, category: 'Production' },
-    { id: '24', name: 'Roasted Beans Spesial Blend 1Kg Medium Roasted', sku: 'ROASTEDBEANS-SPB-1KG-MR', stock: 12, price: 280000, category: 'Production' },
-    { id: '25', name: 'Ground Spesial Blend 250gr Full Roasted', sku: 'GROUND-SPB-250G-FR', stock: 30, price: 95000, category: 'Production' },
-    { id: '26', name: 'Ground Spesial Blend 500gr Medium Roasted', sku: 'GROUND-SPB-500G-MR', stock: 18, price: 180000, category: 'Production' },
-    { id: '27', name: 'Green Beans Arabika 250gr Honey Process', sku: 'GREENBEANS-ARB-250G-HONEY', stock: 50, price: 70000, category: 'Purchase' },
-    { id: '28', name: 'Green Beans Robusta 500gr Natural Process', sku: 'GREENBEANS-ROB-500G-NAT', stock: 40, price: 100000, category: 'Purchase' },
-    { id: '29', name: 'Roasted Beans Spesial Blend 250gr Light Roasted', sku: 'ROASTEDBEANS-SPB-250G-LR', stock: 22, price: 92000, category: 'Production' },
-    { id: '30', name: 'Ground Arabika 1Kg Medium Roasted', sku: 'GROUND-ARB-1KG-MR-2', stock: 14, price: 290000, category: 'Production' },
-    { id: '31', name: 'Green Beans Spesial Blend 1Kg Washed Process', sku: 'GREENBEANS-SPB-1KG-WASH', stock: 25, price: 260000, category: 'Purchase' },
-    { id: '32', name: 'Roasted Beans Robusta 1Kg Full Roasted', sku: 'ROASTEDBEANS-ROB-1KG-FR-2', stock: 3, price: 240000, category: 'Production' },
-];
+const initialInventory: any[] = [];
 
 const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(amount);

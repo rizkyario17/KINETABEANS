@@ -9,31 +9,10 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { Download } from "lucide-react"
 import { Badge } from '@/components/ui/badge';
 
-const salesData = [
-    { id: 'S001', date: '2024-05-20', customer: 'Andi Budi', item: 'Ground Arabika 250gr Full Roasted', quantity: 1, price: 85000, total: 85000, payment: 'Kredit', category: 'Production' },
-    { id: 'S002', date: '2024-05-18', customer: 'Citra Sari', item: 'Green Beans Arabika 1Kg Honey Process', quantity: 2, price: 250000, total: 500000, payment: 'Transfer Bank', category: 'Purchase' },
-    { id: 'S003', date: '2024-05-17', customer: 'Doni Firmansyah', item: 'Roasted Beans Spesial Blend 1Kg Medium Roasted', quantity: 5, price: 280000, total: 1400000, payment: 'Tunai', category: 'Production' },
-    { id: 'S004', date: '2024-05-15', customer: 'Eka Putri', item: 'Green Beans Robusta 1Kg Washed Process', quantity: 10, price: 180000, total: 1800000, payment: 'QRIS', category: 'Purchase' },
-];
-
-const purchaseData = [
-    { id: 'P001', date: '2024-05-19', supplier: 'PT. Biji Kopi Jaya', item: 'Green Beans Arabika 1Kg Honey Process', quantity: 50, price: 200000, total: 10000000 },
-    { id: 'P002', date: '2024-05-16', supplier: 'Distributor Biji', item: 'Green Beans Robusta 1Kg Washed Process', quantity: 10, price: 150000, total: 1500000 },
-];
-
-const inventoryData = [
-    { sku: 'LP15-2023', name: 'Laptop Pro 15"', stock: 23, price: 15000000, value: 345000000, status: 'In Stock' },
-    { sku: 'WM-001', name: 'Wireless Mouse', stock: 8, price: 250000, value: 2000000, status: 'Low Stock' },
-    { sku: 'MK-RED-01', name: 'Mechanical Keyboard', stock: 0, price: 800000, value: 0, status: 'Out of Stock' },
-    { sku: '4KM-27-002', name: '4K Monitor 27"', stock: 15, price: 4500000, value: 67500000, status: 'In Stock' },
-];
-
-const profitLossData = [
-    { period: "January 2024", revenue: 186000000, cogs: 120000000, grossProfit: 66000000, expenses: 25000000, netProfit: 41000000 },
-    { period: "February 2024", revenue: 305000000, cogs: 210000000, grossProfit: 95000000, expenses: 30000000, netProfit: 65000000 },
-    { period: "March 2024", revenue: 237000000, cogs: 160000000, grossProfit: 77000000, expenses: 28000000, netProfit: 49000000 },
-    { period: "April 2024", revenue: 73000000, cogs: 50000000, grossProfit: 23000000, expenses: 20000000, netProfit: 3000000 },
-];
+const salesData: any[] = [];
+const purchaseData: any[] = [];
+const inventoryData: any[] = [];
+const profitLossData: any[] = [];
 
 const productionSales = salesData.filter(s => s.category === 'Production');
 const purchaseSales = salesData.filter(s => s.category === 'Purchase');
@@ -391,5 +370,3 @@ export default function ReportsPage() {
     </>
   )
 }
-
-    

@@ -33,24 +33,8 @@ interface AttendanceRecord {
   notes: string;
 }
 
-const initialEmployees = [
-  { id: 'EMP-001', name: 'Budi Santoso' },
-  { id: 'EMP-002', name: 'Citra Lestari' },
-  { id: 'EMP-003', name: 'Doni Firmansyah' },
-  { id: 'EMP-004', name: 'Eka Putri' },
-];
-
-const initialAttendance: AttendanceRecord[] = [
-  { id: 'att-1', employeeId: 'EMP-001', employeeName: 'Budi Santoso', date: '2024-07-14', clockInTime: '08:15', clockOutTime: '18:30', overtime: '0h 30m', status: 'On Time', notes: '' },
-  { id: 'att-2', employeeId: 'EMP-002', employeeName: 'Citra Lestari', date: '2024-07-14', clockInTime: '09:05', clockOutTime: '18:00', overtime: '0h 0m', status: 'Late', notes: 'Ban bocor' },
-  { id: 'att-3', employeeId: 'EMP-003', employeeName: 'Doni Firmansyah', date: '2024-07-14', clockInTime: null, clockOutTime: null, overtime: '', status: 'Absent', notes: '' },
-  { id: 'att-4', employeeId: 'EMP-001', employeeName: 'Budi Santoso', date: '2024-07-13', clockInTime: '08:00', clockOutTime: '19:00', overtime: '1h 0m', status: 'On Time', notes: '' },
-  { id: 'att-5', employeeId: 'EMP-002', employeeName: 'Citra Lestari', date: '2024-07-13', clockInTime: null, clockOutTime: null, overtime: '', status: 'Sick', notes: 'Surat dokter terlampir' },
-  { id: 'att-6', employeeId: 'EMP-003', employeeName: 'Doni Firmansyah', date: '2024-07-13', clockInTime: '08:45', clockOutTime: '18:05', overtime: '0h 5m', status: 'On Time', notes: '' },
-  { id: 'att-7', employeeId: 'EMP-004', employeeName: 'Eka Putri', date: '2024-07-13', clockInTime: '08:50', clockOutTime: '18:00', overtime: '0h 0m', status: 'On Time', notes: '' },
-  { id: 'att-8', employeeId: 'EMP-001', employeeName: 'Budi Santoso', date: '2024-07-12', clockInTime: '09:30', clockOutTime: '18:00', overtime: '0h 0m', status: 'Late', notes: '' },
-  { id: 'att-9', employeeId: 'EMP-004', employeeName: 'Eka Putri', date: '2024-07-12', clockInTime: null, clockOutTime: null, overtime: '', status: 'Permission', notes: 'Acara keluarga' },
-];
+const initialEmployees: any[] = [];
+const initialAttendance: AttendanceRecord[] = [];
 
 
 const getStatusBadgeVariant = (status: AttendanceStatus) => {
@@ -112,7 +96,7 @@ export default function AttendancePage() {
   const [editingRecord, setEditingRecord] = useState<AttendanceRecord | null>(null);
   const [dailyAttendance, setDailyAttendance] = useState<DailyAttendanceState>({ clockInTime: null, clockOutTime: null, statusMessage: null });
   
-  const [selectedEmployee, setSelectedEmployee] = useState<string>(initialEmployees[0].id);
+  const [selectedEmployee, setSelectedEmployee] = useState<string>(initialEmployees[0]?.id);
   const [currentMonth, setCurrentMonth] = useState(new Date());
 
   useEffect(() => {
@@ -518,5 +502,3 @@ export default function AttendancePage() {
     </>
   );
 }
-
-    

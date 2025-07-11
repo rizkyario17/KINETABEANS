@@ -33,47 +33,7 @@ interface Shipment {
   shippingDate: string;
 }
 
-const initialShipments: Shipment[] = [
-  {
-    id: 'SHP-001',
-    orderId: 'S001',
-    customerName: 'Andi Budi',
-    address: 'Jl. Merdeka No. 10, Jakarta',
-    itemName: 'Laptop Pro 15"',
-    weight: 2.5,
-    weightUnit: 'kg',
-    courier: 'JNE Express',
-    trackingNumber: '889012345678',
-    status: 'Dikirim',
-    shippingDate: '2024-05-21',
-  },
-  {
-    id: 'SHP-002',
-    orderId: 'S002',
-    customerName: 'Citra Sari',
-    address: 'Jl. Pahlawan No. 5, Surabaya',
-    itemName: '4K Monitor 27"',
-    weight: 5,
-    weightUnit: 'kg',
-    courier: 'SiCepat',
-    trackingNumber: '001234567890',
-    status: 'Tiba di Tujuan',
-    shippingDate: '2024-05-19',
-  },
-  {
-    id: 'SHP-003',
-    orderId: 'S004',
-    customerName: 'Eka Putri',
-    address: 'Jl. Sudirman Kav. 5, Bandung',
-    itemName: 'Wireless Mouse',
-    weight: 250,
-    weightUnit: 'gr',
-    courier: 'J&T Express',
-    trackingNumber: 'JP1234567890',
-    status: 'Diproses',
-    shippingDate: '2024-05-22',
-  },
-];
+const initialShipments: Shipment[] = [];
 
 const getStatusBadgeVariant = (status: ShipmentStatus) => {
   switch (status) {

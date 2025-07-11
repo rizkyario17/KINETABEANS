@@ -10,14 +10,7 @@ import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { TriangleAlert, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-const chartData = [
-    { month: "January", revenue: 186000000, expense: 80000000 },
-    { month: "February", revenue: 305000000, expense: 200000000 },
-    { month: "March", revenue: 237000000, expense: 120000000 },
-    { month: "April", revenue: 73000000, expense: 190000000 },
-    { month: "May", revenue: 209000000, expense: 130000000 },
-    { month: "June", revenue: 214000000, expense: 140000000 },
-  ]
+const chartData: any[] = [];
   
   const chartConfig = {
     revenue: {
@@ -102,7 +95,7 @@ export default function FinancePage() {
             <CardTitle className="text-primary-foreground/80">Total Revenue</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-3xl font-bold">{formatCurrency(125750000)}</p>
+            <p className="text-3xl font-bold">{formatCurrency(0)}</p>
           </CardContent>
         </Card>
         <Card className="bg-primary text-primary-foreground">
@@ -110,7 +103,7 @@ export default function FinancePage() {
             <CardTitle className="text-primary-foreground/80">Total Expense</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-3xl font-bold">{formatCurrency(45320000)}</p>
+            <p className="text-3xl font-bold">{formatCurrency(0)}</p>
           </CardContent>
         </Card>
         <Card className="bg-primary text-primary-foreground">
@@ -118,7 +111,7 @@ export default function FinancePage() {
             <CardTitle className="text-primary-foreground/80">Profit</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-3xl font-bold">{formatCurrency(80430000)}</p>
+            <p className="text-3xl font-bold">{formatCurrency(0)}</p>
           </CardContent>
         </Card>
       </div>

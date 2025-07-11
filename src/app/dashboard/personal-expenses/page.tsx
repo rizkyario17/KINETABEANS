@@ -30,11 +30,7 @@ const expenseCategories = [
     "Transport", "Food & Drink", "Utilities", "Rent/Mortgage", "Shopping", "Entertainment", "Health", "Education", "Family", "Other"
 ];
 
-const initialExpenses: Expense[] = [
-    { id: 'exp_1', date: new Date(2024, 6, 10), category: 'Food & Drink', description: 'Lunch with client', amount: 150000 },
-    { id: 'exp_2', date: new Date(2024, 6, 10), category: 'Transport', description: 'Gasoline', amount: 200000 },
-    { id: 'exp_3', date: new Date(2024, 6, 9), category: 'Shopping', description: 'New shoes', amount: 750000 },
-];
+const initialExpenses: Expense[] = [];
 
 const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(amount);

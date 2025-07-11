@@ -40,38 +40,20 @@ import { TriangleAlert, PlusCircle, User, Mail, Phone, Briefcase, Edit, Trash2 }
 import { useToast } from '@/hooks/use-toast';
 
 
-const initialEmployees = [
-  {
-    id: 'EMP-001',
-    name: 'Budi Santoso',
-    position: 'Kasir',
-    contact: '081234567890',
-    email: 'budi.santoso@example.com',
-    avatar: 'https://placehold.co/100x100.png',
-  },
-  {
-    id: 'EMP-002',
-    name: 'Citra Lestari',
-    position: 'Staf Gudang',
-    contact: '081298765432',
-    email: 'citra.lestari@example.com',
-    avatar: 'https://placehold.co/100x100.png',
-  },
-  {
-    id: 'EMP-003',
-    name: 'Doni Firmansyah',
-    position: 'Kasir',
-    contact: '081211223344',
-    email: 'doni.firmansyah@example.com',
-    avatar: 'https://placehold.co/100x100.png',
-  },
-];
+const initialEmployees: any[] = [];
 
-type Employee = typeof initialEmployees[0];
+type Employee = {
+    id: string;
+    name: string;
+    position: string;
+    contact: string;
+    email: string;
+    avatar: string;
+};
 
 export default function ManageUsersPage() {
   const [userRole, setUserRole] = useState<string | null>(null);
-  const [employees, setEmployees] = useState(initialEmployees);
+  const [employees, setEmployees] = useState<Employee[]>(initialEmployees);
   const [selectedEmployee, setSelectedEmployee] = useState<Employee | null>(null);
   const [employeeToEdit, setEmployeeToEdit] = useState<Employee | null>(null);
   const [employeeToDelete, setEmployeeToDelete] = useState<Employee | null>(null);
@@ -114,7 +96,7 @@ export default function ManageUsersPage() {
   const handleSaveEmployee = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    const employeeData = {
+    const employeeData: Employee = {
         id: formData.get('id') as string,
         name: formData.get('name') as string,
         position: formData.get('position') as string,
