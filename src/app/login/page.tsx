@@ -10,9 +10,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Logo } from "@/components/icons";
 import { Package, BarChart3, Lock, Users, Truck, CreditCard } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-// Firebase imports will be done dynamically inside the function
-// import { auth } from '@/lib/firebase';
-// import { GoogleAuthProvider, signInWithPopup, UserCredential } from "firebase/auth";
+
 
 const GoogleIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24px" height="24px" {...props}>
@@ -29,7 +27,7 @@ export default function LoginPage() {
   const { toast } = useToast();
 
   const handleGoogleLogin = async () => {
-    // Dynamically import Firebase modules only on the client-side
+    // Dynamically import Firebase modules only on the client-side, inside the handler
     const { auth } = await import('@/lib/firebase');
     const { GoogleAuthProvider, signInWithPopup } = await import('firebase/auth');
     
@@ -37,7 +35,7 @@ export default function LoginPage() {
         toast({
             variant: "destructive",
             title: "Firebase Not Configured",
-            description: "Firebase authentication is not configured. Please check your .env.local file.",
+            description: "Firebase authentication is not configured. Please check your .env.local file and ensure it is loaded correctly.",
         });
         return;
     }

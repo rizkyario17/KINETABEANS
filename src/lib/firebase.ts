@@ -1,11 +1,11 @@
 
 // Import the functions you need from the SDKs you need
-import { initializeApp, getApps, getApp, FirebaseOptions } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
+import { initializeApp, getApps, getApp, FirebaseApp } from "firebase/app";
+import { getFirestore, Firestore } from "firebase/firestore";
+import { getAuth, Auth } from "firebase/auth";
 
 // Your web app's Firebase configuration
-const firebaseConfig: FirebaseOptions = {
+const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
   authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
   projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
@@ -14,20 +14,27 @@ const firebaseConfig: FirebaseOptions = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
-// A function to initialize Firebase safely
-function initializeFirebase() {
-  if (!firebaseConfig.apiKey) {
-    console.error("Firebase API key is missing. Please check your .env.local file.");
-    // Return a mock or null object to prevent further errors
-    return { app: null, db: null, auth: null };
-  }
+// Initialize Firebase for client-side usage
+let app: FirebaseApp;
+let auth: Auth;
+let db: Firestore;
 
-  const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
-  const db = getFirestore(app);
-  const auth = getAuth(app);
-  return { app, db, auth };
+// Check if we are on the client side before initializing
+if (typeof window !== 'undefined' && !getApps().length) {
+    try {
+        app = initializeApp(firebaseConfig);
+        auth = getAuth(app);
+        db = getFirestore(app);
+    } catch (error) {
+        console.error("Firebase initialization error:", error);
+        // Handle the error appropriately, maybe by setting app/auth/db to null
+        // and showing a friendly message to the user.
+    }
+} else if (typeof window !== 'undefined') {
+    app = getApp();
+    auth = getAuth(app);
+    db = getFirestore(app);
 }
 
-const { app, db, auth } = initializeFirebase();
-
+// @ts-ignore
 export { app, db, auth };
