@@ -39,6 +39,7 @@ import {
   } from '@/components/ui/table';
 import { Download, FileText, Package, ArrowUpCircle, ArrowDownCircle } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { transactions as initialTransactions, addTransaction } from '@/lib/transaction-data';
 
 
 // This data would ideally come from a shared state/context or API
@@ -75,12 +76,6 @@ const initialInventory = [
     { id: '30', name: 'Ground Arabika 1Kg Medium Roasted', sku: 'GROUND-ARB-1KG-MR-2', stock: 14, price: 290000, category: 'Production' },
     { id: '31', name: 'Green Beans Spesial Blend 1Kg Washed Process', sku: 'GREENBEANS-SPB-1KG-WASH', stock: 25, price: 260000, category: 'Purchase' },
     { id: '32', name: 'Roasted Beans Robusta 1Kg Full Roasted', sku: 'ROASTEDBEANS-ROB-1KG-FR-2', stock: 3, price: 240000, category: 'Production' },
-];
-
-const initialTransactions = [
-    { id: 'T001', type: 'Sale', itemId: '1', itemName: 'Ground Arabika 250gr Full Roasted', quantity: 2, date: '2024-07-15', total: 170000, status: 'Lunas', category: 'Production' },
-    { id: 'T002', type: 'Purchase', itemId: '19', itemName: 'Green Beans Arabika 1Kg Honey Process', quantity: 10, date: '2024-07-14', total: 2500000, status: 'Lunas', category: 'Purchase' },
-    { id: 'T003', type: 'Sale', itemId: '5', itemName: 'Ground Arabika 500gr Medium Roasted', quantity: 1, date: '2024-07-13', total: 150000, status: 'Kredit', category: 'Production' },
 ];
 
 const formatCurrency = (amount: number) => {
@@ -249,6 +244,7 @@ export default function TransactionsPage() {
   }, [transactions]);
 
   const handleSaveTransaction = (transaction: any) => {
+    addTransaction(transaction);
     setTransactions(prev => [transaction, ...prev]);
 
     // Update inventory stock

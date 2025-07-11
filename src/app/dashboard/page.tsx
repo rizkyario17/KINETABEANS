@@ -20,13 +20,7 @@ import {
 import { ChartContainer, ChartTooltip, ChartTooltipContent, ChartConfig } from "@/components/ui/chart"
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid } from "recharts"
 import { DollarSign, CreditCard, AlertTriangle, PackageX } from "lucide-react"
-
-const recentTransactions = [
-    { id: 1, type: 'Penjualan', item: 'Laptop Pro 15"', quantity: 1, date: '2024-05-20', total: 15500000, status: 'Lunas' },
-    { id: 2, type: 'Pembelian', item: 'Wireless Mouse', quantity: 50, date: '2024-05-19', total: 10000000, status: 'Lunas' },
-    { id: 3, type: 'Penjualan', item: '4K Monitor 27"', quantity: 2, date: '2024-05-18', total: 9000000, status: 'Kredit' },
-    { id: 4, type: 'Penjualan', item: 'Mechanical Keyboard', quantity: 5, date: '2024-05-17', total: 4000000, status: 'Lunas' },
-];
+import { transactions as recentTransactions } from '@/lib/transaction-data';
 
 const chartData = [
     { month: "January", Penjualan: 18600000 },
@@ -164,13 +158,13 @@ export default function DashboardPage() {
                             </TableRow>
                         </TableHeader>
                         <TableBody>
-                            {recentTransactions.map(tx => (
+                            {recentTransactions.slice(0, 4).map(tx => (
                                 <TableRow key={tx.id}>
                                     <TableCell>
                                         <div className="font-medium">{tx.type}</div>
                                         <div className="text-sm text-muted-foreground">{tx.date}</div>
                                     </TableCell>
-                                    <TableCell>{tx.item}</TableCell>
+                                    <TableCell>{tx.itemName}</TableCell>
                                     <TableCell className="text-right">{formatCurrency(tx.total)}</TableCell>
                                 </TableRow>
                             ))}
